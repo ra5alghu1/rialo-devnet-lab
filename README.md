@@ -64,6 +64,18 @@ workflow state, `get` observes it on a later invocation, and `clear` resets
 the slot. The first version uses primitive state so the DevNet behaviour can be
 verified before experimenting with collection-shaped state.
 
+## Build smoke checks
+
+The Rust examples are separate crates with their own lockfiles. Run the repository-wide compile smoke check with:
+
+```bash
+bash scripts/check-all.sh
+```
+
+It runs locked Cargo checks for all four examples. The Venus examples are checked with the `implementation` feature enabled so their implementation code is compiled too.
+
+GitHub Actions runs the same checks on pushes and pull requests. These are compile-time checks only: they do not use the faucet, submit transactions, deploy programs, or require DevNet credentials.
+
 ## Notes
 
 There may be rough edges here.
